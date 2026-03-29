@@ -1,0 +1,14 @@
+{
+  "name": "db-hw-3",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "npx @tailwindcss/cli -i templates/css/app.css -o static/css/index.css"
+  },
+  "author": "",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.2.2",
+    "daisyui": "^5.5.19",
+    "tailwindcss": "^4.2.2"
+  }
+}

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build:css": "npx @tailwindcss/cli -i templates/css/app.css -o static/css/index.css"
+    "build:css": "npx @tailwindcss/cli -i templates/css/app.css -o static/css/base.css"
   },
   "author": "",
   "dependencies": {

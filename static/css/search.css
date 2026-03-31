@@ -9,9 +9,7 @@
 .main-card {
     width: 1200px;
     height: 375px;
-    display: inline-grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    display: flex;
     align-items: center;
     justify-content: center;
 }
@@ -20,12 +18,4 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-label {
-    width: 450px
-}
-
-.button-cell {
-    grid-column: 1 / 3;
 }

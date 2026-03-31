@@ -2,14 +2,68 @@
 
 <!-- -->
 
-{% block head %} <title>Flights</title> {% endblock %}
+{% block head %}
+<title>Flights</title>
+<link
+        href="{{ url_for('static', filename='css/index.css') }}"
+        rel="stylesheet"
+/>
+{% endblock %}
 
 <!-- -->
 
 {% block body %}
 
-<h1>Hello, {{ name }}!</h1>
+<div class="main-container">
+    <form action="/search" method="get">
+        <div class="main-card bg-base-300 rounded-4xl">
+            <div class="cell">
 
-<input type="date" class="input" />
+                <label class="select">
+                    <span class="label">Departure Airport</span>
+                    <select name="origin-code" class="select" required>
+                        <option value="" disabled selected>Please Select</option>
+                        {% for airport in airports %}
+                        <option value="{{ airport['airport_code'] }}">
+                            {{ airport["airport_code"] }} , {{ airport["name"] }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </label>
+            </div>
+
+            <div class="cell"><label class="select">
+                <span class="label">Destination Airport</span>
+                <select name="dest-code" class="select">
+                    <option value="" disabled selected>Please Select</option>
+                    {% for airport in airports %}
+                    <option value="{{ airport['airport_code'] }}">
+                        {{ airport["airport_code"] }} , {{ airport["name"] }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </label>
+            </div>
+
+            <div class="cell">
+                <label class="input">
+                    <span class="label">Earliest departure</span>
+                    <input name="first-date" type="date" class="input" required/>
+                </label>
+            </div>
+
+            <div class="cell">
+                <label class="input">
+                    <span class="label">Latest departure</span>
+                    <input name="last-date" type="date" class="input" required/>
+                </label>
+            </div>
+
+            <div class="cell button-cell">
+                <button class="btn btn-outline" type="submit">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
 
 {% endblock %}

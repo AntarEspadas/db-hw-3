@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+<!-- -->
+
+{% block head %}
+<title>Flights</title>
+<link
+        href="{{ url_for('static', filename='css/details.css') }}"
+        rel="stylesheet"
+/>
+{% endblock %}
+
+<!-- -->
+
+{% block body %}
+
+<div class="main-container">
+    <div class="main-card bg-base-300 rounded-4xl">
+        <div class="card bg-base-100 w-175 shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title">Flight Details</h2>
+                <div> <span class="font-bold">{{ flight["flight_number"] }}</span> operated by <span class="font-bold">{{ flight["airline_name"] }}</span> </div>
+                <div> {{ flight["duration"] | duration }} </div>
+                <div> <span class="font-bold">{{ flight["capacity"] - occupancy }}</span> of <span class="font-bold">{{ flight["capacity"] }}</span> seats available</div>
+                <hr />
+                <ul class="timeline timeline-vertical">
+                    <li>
+                        <div class="timeline-middle">
+                            <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    class="text-primary h-5 w-5"
+                            >
+                                <path
+                                        fill-rule="evenodd"
+                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                                        clip-rule="evenodd"
+                                />
+                            </svg>
+                        </div>
+                        <div class="timeline-end h-40">
+                            <div class="text-lg font-bold"> {{ flight["departure_time"].strftime("%-I:%M %p") }} </div>
+                            <div> {{ flight["origin_code"] }} </div>
+                            <div> {{ flight["origin_city"] }},  </div>
+                            <div> {{ flight["origin_country"] }} </div>
+                        </div>
+                        <hr class="bg-primary"/>
+                    </li>
+                    <li>
+                        <hr class="bg-primary"/>
+                        <div class="timeline-middle">
+                            <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    class="text-primary h-5 w-5"
+                            >
+                                <path
+                                        fill-rule="evenodd"
+                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                                        clip-rule="evenodd"
+                                />
+                            </svg>
+                        </div>
+                        <div class="timeline-end">
+                            <div class="text-lg font-bold"> {{ flight["arrival_time"].strftime("%-I:%M %p") }} </div>
+                            <div> {{ flight["dest_code"] }} </div>
+                            <div> {{ flight["dest_city"] }}, </div>
+                            <div> {{ flight["dest_country"] }} </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

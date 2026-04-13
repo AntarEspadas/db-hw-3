@@ -7,7 +7,7 @@
 }
 
 .main-card {
-    width: 1200px;
+    width: 1000px;
     height: 375px;
     display: inline-grid;
     grid-template-columns: 1fr 1fr;

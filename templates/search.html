@@ -21,14 +21,23 @@
                         {% for flight in flights %}
                         <li class="list-row">
                                 <div>{{ flight["flight_number"] }}</div>
-                                <div>
-                                        <div>{{ flight["departure_date"] }} </div>
-                                        <div class="text-xs uppercase font-semibold opacity-60">{{ flight["departure_time"] }}</div>
+                                <div class="w-lg">
+                                        <div>{{ flight["departure_date"].strftime("%d/%b/%Y") }} </div>
+                                        <div>
+                                                <span class="opacity-100 font-bold">Departure time: </span>
+                                                <span class="text-xs uppercase font-semibold opacity-60">{{ flight["departure_time"].strftime("%-I:%M %p") }} </span>
+                                        </div>
+                                        <div>
+                                                <span class="opacity-100 font-bold">Duration: </span>
+                                                <span class="text-xs uppercase font-semibold opacity-60">{{ flight["duration"]|duration }}</span>
+                                        </div>
                                 </div>
-                                <div>{{ flight["duration"] }}</div>
-                                <button class="btn btn-square btn-ghost">
-                                        <svg class="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g stroke-linejoin="round" stroke-linecap="round" stroke-width="2" fill="none" stroke="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></g></svg>
-                                </button>
+                                <a
+                                        href="/details?flight-number={{ flight['flight_number'] }}&departure-date={{ flight['departure_date'] }}"
+                                        role="button"
+                                        class="btn btn-outline">
+                                        Details
+                                </a>
                         </li>
                         {% endfor %}
                 </ul>
